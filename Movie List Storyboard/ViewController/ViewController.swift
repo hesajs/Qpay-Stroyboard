@@ -9,7 +9,7 @@ import UIKit
 import Network
 
 class ViewController: UIViewController {
-
+    
     //MARK: - IBOutlets
     @IBOutlet weak var tableView: UITableView!
     
@@ -21,19 +21,42 @@ class ViewController: UIViewController {
     var movies: [MovieProp] = []
     var images: [UIImage] = []
     var coreDataMovie: [MovieProps] = []
-
+    
     
     //MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         tableView.rowHeight = 120
         tableView.delegate = self
         tableView.dataSource = self
         
         monitorNetwork()
     }
-
+    
+     
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+         if segue.identifier == "DetailViewController" {
+             if let indexPath = self.tableView.indexPathForSelectedRow {
+                 tableView.deselectRow(at: indexPath, animated: true)
+                 let controller = segue.destination as! DetailViewController
+                 
+                 if isNetwork {
+                     controller.imdbID = movies[indexPath.row].imdbID
+                     controller.titleTxt = movies[indexPath.row].movieTitle
+                     controller.year = movies[indexPath.row].year
+                     controller.image = images[indexPath.row]
+                 } else {
+                     controller.imdbID = coreDataMovie[indexPath.row].imdbID
+                     controller.titleTxt = coreDataMovie[indexPath.row].title
+                     controller.year = coreDataMovie[indexPath.row].year
+                     controller.image = UIImage(data: coreDataMovie[indexPath.row].posterImage!)
+                 }
+                 
+             }
+         }
+     }
+    
     
     //MARK: - Function Helpers
     func monitorNetwork() {
@@ -139,7 +162,7 @@ class ViewController: UIViewController {
         }
         return img
     }
-
+    
 }
 
 
@@ -162,11 +185,6 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate {
                 cell.titleLabel.text = movies[indexPath.row].movieTitle
                 cell.year.text = movies[indexPath.row].year
                 cell.posterImageView.image = images[indexPath.row]
-            } else {
-                cell.imdbID.text = "yo boie"
-                cell.titleLabel.text = "yo boie"
-                cell.year.text = "yo boie"
-                cell.posterImageView.image = #imageLiteral(resourceName: "noimage")
             }
         } else {
             if !coreDataMovie.isEmpty {
@@ -179,6 +197,5 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate {
         
         return cell
     }
-    
 }
 

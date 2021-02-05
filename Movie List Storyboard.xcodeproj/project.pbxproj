@@ -17,6 +17,7 @@
 		87D78E7825CD0C3A0046EAD5 /* FakeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D78E7725CD0C3A0046EAD5 /* FakeModel.swift */; };
 		87D78E7B25CD10D10046EAD5 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D78E7A25CD10D10046EAD5 /* UIViewController+Ext.swift */; };
 		87D78E8A25CD17250046EAD5 /* MyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D78E8925CD17250046EAD5 /* MyTableViewCell.swift */; };
+		87D78E9025CD30130046EAD5 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D78E8F25CD30130046EAD5 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		87D78E7725CD0C3A0046EAD5 /* FakeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeModel.swift; sourceTree = "<group>"; };
 		87D78E7A25CD10D10046EAD5 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		87D78E8925CD17250046EAD5 /* MyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewCell.swift; sourceTree = "<group>"; };
+		87D78E8F25CD30130046EAD5 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				87D78E5C25CD0B890046EAD5 /* ViewController.swift */,
+				87D78E8F25CD30130046EAD5 /* DetailViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 				87D78E5925CD0B890046EAD5 /* AppDelegate.swift in Sources */,
 				87D78E7825CD0C3A0046EAD5 /* FakeModel.swift in Sources */,
 				87D78E5B25CD0B890046EAD5 /* SceneDelegate.swift in Sources */,
+				87D78E9025CD30130046EAD5 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
