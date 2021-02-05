@@ -21,8 +21,7 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
-        
+
         titleLabel.text = titleTxt
         yearLabel.text = year
         imdbIDLabel.text = imdbID
@@ -30,4 +29,7 @@ class DetailViewController: UIViewController {
     }
     
     
+    @IBAction func doneButtonPressed(_ sender: Any) {
+        dismiss(animated: true)
+    }
 }

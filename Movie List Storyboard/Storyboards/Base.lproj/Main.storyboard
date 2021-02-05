@@ -86,7 +86,7 @@
                                             <outlet property="posterImageView" destination="Pg0-uu-2yf" id="GnP-Mf-ZmR"/>
                                             <outlet property="titleLabel" destination="bnJ-x5-xAM" id="wlf-bV-CpG"/>
                                             <outlet property="year" destination="nLI-5M-yRi" id="K05-Wm-X1s"/>
-                                            <segue destination="qJI-eL-v43" kind="presentation" identifier="DetailViewController" id="5Gy-Rt-Rhd"/>
+                                            <segue destination="Vd8-xY-7NI" kind="presentation" identifier="DetailViewController" id="5Gy-Rt-Rhd"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -113,20 +113,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noimage" translatesAutoresizingMaskIntoConstraints="NO" id="cag-cO-Qgg">
-                                <rect key="frame" x="76" y="20" width="263" height="309"/>
+                                <rect key="frame" x="76" y="76" width="263" height="309"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="263" id="45k-ct-gtz"/>
                                     <constraint firstAttribute="height" constant="309" id="6sa-vN-bta"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H23-QE-Cpp">
-                                <rect key="frame" x="183.5" y="385" width="47.5" height="29"/>
+                                <rect key="frame" x="183.5" y="441" width="47.5" height="29"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="WR6-1A-lw5">
-                                <rect key="frame" x="43" y="436" width="328" height="60"/>
+                                <rect key="frame" x="43" y="492" width="328" height="60"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="h5y-H2-Z3Y" userLabel="LabelStackView">
                                         <rect key="frame" x="0.0" y="0.0" width="276.5" height="60"/>
@@ -178,7 +178,13 @@
                             <constraint firstItem="H23-QE-Cpp" firstAttribute="top" secondItem="cag-cO-Qgg" secondAttribute="bottom" constant="56" id="umE-zL-J6n"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="zP2-7h-YB3"/>
+                    <navigationItem key="navigationItem" id="zP2-7h-YB3">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="vNc-ls-oYq">
+                            <connections>
+                                <action selector="doneButtonPressed:" destination="qJI-eL-v43" id="mYB-Sd-tB6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="imdbIDLabel" destination="XOW-TL-4jS" id="vnQ-UO-w8b"/>
                         <outlet property="posterImageView" destination="cag-cO-Qgg" id="odf-Yq-Lbp"/>
@@ -188,7 +194,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y5l-EQ-kp3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1975" y="88"/>
+            <point key="canvasLocation" x="2884.057971014493" y="87.723214285714278"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mz8-lb-Fod">
@@ -207,6 +213,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jrq-TW-ZpL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="88.392857142857139"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="cz2-Q1-u3I">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Vd8-xY-7NI" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MSY-Je-zal">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="qJI-eL-v43" kind="relationship" relationship="rootViewController" id="tjq-1n-9Bj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YT0-fB-ehK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1973.913043478261" y="87.723214285714278"/>
         </scene>
     </scenes>
     <resources>

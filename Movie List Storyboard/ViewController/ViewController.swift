@@ -39,7 +39,8 @@ class ViewController: UIViewController {
          if segue.identifier == "DetailViewController" {
              if let indexPath = self.tableView.indexPathForSelectedRow {
                  tableView.deselectRow(at: indexPath, animated: true)
-                 let controller = segue.destination as! DetailViewController
+                 let navController = segue.destination as! UINavigationController
+                let controller = navController.topViewController as! DetailViewController
                  
                  if isNetwork {
                      controller.imdbID = movies[indexPath.row].imdbID
