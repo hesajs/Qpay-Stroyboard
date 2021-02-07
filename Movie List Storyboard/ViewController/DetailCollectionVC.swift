@@ -1,14 +1,14 @@
 //
-//  DetailViewController.swift
+//  DetailCollectionVC.swift
 //  Movie List Storyboard
 //
-//  Created by SaJesh Shrestha on 2/5/21.
+//  Created by SaJesh Shrestha on 2/7/21.
 //
 
 import UIKit
 
-class DetailViewController: UIViewController {
-
+class DetailCollectionVC: UIViewController {
+    
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
@@ -18,7 +18,7 @@ class DetailViewController: UIViewController {
     var imdbID: String?
     var titleTxt: String?
     var image: UIImage?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,8 +28,4 @@ class DetailViewController: UIViewController {
         posterImageView.image   = image
     }
     
-    
-    @IBAction func doneButtonPressed(_ sender: Any) {
-        dismiss(animated: true)
-    }
 }

@@ -18,6 +18,8 @@
 		87D78E7B25CD10D10046EAD5 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D78E7A25CD10D10046EAD5 /* UIViewController+Ext.swift */; };
 		87D78E8A25CD17250046EAD5 /* MyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D78E8925CD17250046EAD5 /* MyTableViewCell.swift */; };
 		87D78E9025CD30130046EAD5 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D78E8F25CD30130046EAD5 /* DetailViewController.swift */; };
+		87FA8B7A25CFB88C009D6861 /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FA8B7925CFB88C009D6861 /* MyCollectionViewCell.swift */; };
+		87FA8BA125CFDB43009D6861 /* DetailCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FA8BA025CFDB43009D6861 /* DetailCollectionVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		87D78E7A25CD10D10046EAD5 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		87D78E8925CD17250046EAD5 /* MyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewCell.swift; sourceTree = "<group>"; };
 		87D78E8F25CD30130046EAD5 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		87FA8B7925CFB88C009D6861 /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
+		87FA8BA025CFDB43009D6861 /* DetailCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,10 +74,10 @@
 				87D78E7225CD0BEF0046EAD5 /* ViewController */,
 				87D78E7625CD0C1C0046EAD5 /* Storyboards */,
 				87D78E7025CD0BE40046EAD5 /* Model */,
+				87D78E8C25CD172B0046EAD5 /* Custom Views */,
+				87FA8BA325CFF7CB009D6861 /* Extensions */,
 				87D78E6425CD0B8F0046EAD5 /* Assets.xcassets */,
 				87D78E6925CD0B8F0046EAD5 /* Info.plist */,
-				87D78E7A25CD10D10046EAD5 /* UIViewController+Ext.swift */,
-				87D78E8C25CD172B0046EAD5 /* Custom Views */,
 			);
 			path = "Movie List Storyboard";
 			sourceTree = "<group>";
@@ -92,6 +96,7 @@
 			children = (
 				87D78E5C25CD0B890046EAD5 /* ViewController.swift */,
 				87D78E8F25CD30130046EAD5 /* DetailViewController.swift */,
+				87FA8BA025CFDB43009D6861 /* DetailCollectionVC.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -118,8 +123,17 @@
 			isa = PBXGroup;
 			children = (
 				87D78E8925CD17250046EAD5 /* MyTableViewCell.swift */,
+				87FA8B7925CFB88C009D6861 /* MyCollectionViewCell.swift */,
 			);
 			path = "Custom Views";
+			sourceTree = "<group>";
+		};
+		87FA8BA325CFF7CB009D6861 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				87D78E7A25CD10D10046EAD5 /* UIViewController+Ext.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,12 +208,14 @@
 			files = (
 				87D78E8A25CD17250046EAD5 /* MyTableViewCell.swift in Sources */,
 				87D78E5D25CD0B890046EAD5 /* ViewController.swift in Sources */,
+				87FA8B7A25CFB88C009D6861 /* MyCollectionViewCell.swift in Sources */,
 				87D78E6325CD0B890046EAD5 /* Movie_List_Storyboard.xcdatamodeld in Sources */,
 				87D78E7B25CD10D10046EAD5 /* UIViewController+Ext.swift in Sources */,
 				87D78E5925CD0B890046EAD5 /* AppDelegate.swift in Sources */,
 				87D78E7825CD0C3A0046EAD5 /* FakeModel.swift in Sources */,
 				87D78E5B25CD0B890046EAD5 /* SceneDelegate.swift in Sources */,
 				87D78E9025CD30130046EAD5 /* DetailViewController.swift in Sources */,
+				87FA8BA125CFDB43009D6861 /* DetailCollectionVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
