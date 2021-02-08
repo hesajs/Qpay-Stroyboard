@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     
     //MARK: - IBOutlets
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var collectionView: UICollectionView!
+
     
     
     //MARK: - Fields
@@ -30,7 +30,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         configureTableView()
-        configureCollectionView()
         monitorNetwork()
     }
     
@@ -60,19 +59,9 @@ class ViewController: UIViewController {
     
     //MARK: - Configurations
     fileprivate func configureTableView() {
-        tableView.rowHeight = 135
+        tableView.rowHeight = 145
         tableView.delegate = self
         tableView.dataSource = self
-    }
-    
-    
-    fileprivate func configureCollectionView() {
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        collectionView.collectionViewLayout = layout
-        
     }
     
     
@@ -125,7 +114,6 @@ class ViewController: UIViewController {
             }.resume()
         }
         tableView.reloadData()
-        collectionView.reloadData()
     }
     
     
@@ -140,7 +128,6 @@ class ViewController: UIViewController {
         
         DispatchQueue.main.async {
             self.tableView.reloadData()
-            self.collectionView.reloadData()
         }
     }
     
@@ -160,7 +147,6 @@ class ViewController: UIViewController {
                 else{ images.append(#imageLiteral(resourceName: "noimage")) }
                 
                 self.tableView.reloadData()
-                self.collectionView.reloadData()
             }
             
         }
@@ -191,13 +177,15 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath) as! MyTableViewCell
-        
+        //TODO: pass the data to MyTableViewCell for CollectionView
         if isNetwork {
             if !movies.isEmpty {
                 cell.imdbID.text            = movies[indexPath.row].imdbID
                 cell.titleLabel.text        = movies[indexPath.row].movieTitle
                 cell.year.text              = movies[indexPath.row].year
                 cell.posterImageView.image  = images[indexPath.row]
+                cell.isNetwork              = isNetwork
+                cell.images                 = images
             }
         } else {
             if !coreDataMovie.isEmpty {
@@ -213,55 +201,4 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate {
 }
 
 
-//MARK: - UICollectionView Extension
-extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-        
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if isNetwork{ return images.count }
-        else { return coreDataMovie.count }
-    }
-    
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewIdentifier", for: indexPath) as! MyCollectionViewCell
-        
-        if isNetwork {
-            if !movies.isEmpty {
-                cell.set(image: images[indexPath.row], label: movies[indexPath.row].movieTitle)
-            }
-        } else {
-            if !coreDataMovie.isEmpty { cell.set(image: UIImage(data: coreDataMovie[indexPath.row].posterImage!)!, label: coreDataMovie[indexPath.row].title!)
-            }
-        }
-        return cell
-    }
-    
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
-        let destinationVC = mainStoryBoard.instantiateViewController(identifier: "DetailCollectionVC") as! DetailCollectionVC
-        if isNetwork {
-            destinationVC.image     = images[indexPath.item]
-            destinationVC.imdbID    = movies[indexPath.item].imdbID
-            destinationVC.titleTxt  = movies[indexPath.item].movieTitle
-            destinationVC.year      = movies[indexPath.item].year
-        } else {
-            destinationVC.titleTxt  = coreDataMovie[indexPath.item].title
-            destinationVC.year      = coreDataMovie[indexPath.item].year
-            destinationVC.imdbID    = coreDataMovie[indexPath.item].imdbID
-            destinationVC.image     = UIImage(data: coreDataMovie[indexPath.item].posterImage!)
-        }
-        navigationController?.pushViewController(destinationVC, animated: true)
-    }
-        
-}
 
-
-extension ViewController: UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (view.bounds.width - 16) / 2.2
-        return CGSize(width: width, height: width)
-    }
-    
-}
