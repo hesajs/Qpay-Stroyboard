@@ -8,11 +8,11 @@
 import UIKit
 import Network
 
+
 class ViewController: UIViewController {
     
     //MARK: - IBOutlets
     @IBOutlet weak var tableView: UITableView!
-
     
     
     //MARK: - Fields
@@ -25,7 +25,6 @@ class ViewController: UIViewController {
     
     
     //MARK: - View Life Cycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,33 +32,32 @@ class ViewController: UIViewController {
         monitorNetwork()
     }
     
-     
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         if segue.identifier == "DetailViewController" {
-             if let indexPath = self.tableView.indexPathForSelectedRow {
-                 tableView.deselectRow(at: indexPath, animated: true)
-                 let navController = segue.destination as! UINavigationController
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "DetailViewController" {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                tableView.deselectRow(at: indexPath, animated: true)
+                let navController = segue.destination as! UINavigationController
                 let controller = navController.topViewController as! DetailViewController
-                 
-                 if isNetwork {
-                     controller.imdbID      = movies[indexPath.row].imdbID
-                     controller.titleTxt    = movies[indexPath.row].movieTitle
-                     controller.year        = movies[indexPath.row].year
-                     controller.image       = images[indexPath.row]
-                 } else {
-                     controller.imdbID      = coreDataMovie[indexPath.row].imdbID
-                     controller.titleTxt    = coreDataMovie[indexPath.row].title
-                     controller.year        = coreDataMovie[indexPath.row].year
-                     controller.image       = UIImage(data: coreDataMovie[indexPath.row].posterImage!)
-                 }
-             }
-         }
-     }
+                
+                if isNetwork {
+                    controller.imdbID      = movies[indexPath.row].imdbID
+                    controller.titleTxt    = movies[indexPath.row].movieTitle
+                    controller.year        = movies[indexPath.row].year
+                    controller.image       = images[indexPath.row]
+                } else {
+                    controller.imdbID      = coreDataMovie[indexPath.row].imdbID
+                    controller.titleTxt    = coreDataMovie[indexPath.row].title
+                    controller.year        = coreDataMovie[indexPath.row].year
+                    controller.image       = UIImage(data: coreDataMovie[indexPath.row].posterImage!)
+                }
+            }
+        }
+    }
     
     
     //MARK: - Configurations
     fileprivate func configureTableView() {
-        tableView.rowHeight = 145
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -175,30 +173,65 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate {
     }
     
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 0 { return 260 }
+        return 145
+    }
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath) as! MyTableViewCell
-        //TODO: pass the data to MyTableViewCell for CollectionView
-        if isNetwork {
-            if !movies.isEmpty {
-                cell.imdbID.text            = movies[indexPath.row].imdbID
-                cell.titleLabel.text        = movies[indexPath.row].movieTitle
-                cell.year.text              = movies[indexPath.row].year
-                cell.posterImageView.image  = images[indexPath.row]
-                cell.isNetwork              = isNetwork
-                cell.images                 = images
-            }
+        
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TableCollectionViewCell", for: indexPath) as! MyCollectionTableViewCell
+            cell.movies         = movies
+            cell.images         = images
+            cell.coreDataMovie  = coreDataMovie
+            cell.isNetwork      = isNetwork
+            cell.colDelegate = self
+            
+            return cell
+            
         } else {
-            if !coreDataMovie.isEmpty {
-                cell.imdbID.text            = coreDataMovie[indexPath.row].imdbID
-                cell.titleLabel.text        = coreDataMovie[indexPath.row].title
-                cell.year.text              = coreDataMovie[indexPath.row].year
-                cell.posterImageView.image  = UIImage(data: coreDataMovie[indexPath.row].posterImage!)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath) as! MyTableViewCell
+            if isNetwork {
+                if !movies.isEmpty {
+                    cell.imdbID.text            = movies[indexPath.row].imdbID
+                    cell.titleLabel.text        = movies[indexPath.row].movieTitle
+                    cell.year.text              = movies[indexPath.row].year
+                    cell.posterImageView.image  = images[indexPath.row]
+                }
+            } else {
+                if !coreDataMovie.isEmpty {
+                    cell.imdbID.text            = coreDataMovie[indexPath.row].imdbID
+                    cell.titleLabel.text        = coreDataMovie[indexPath.row].title
+                    cell.year.text              = coreDataMovie[indexPath.row].year
+                    cell.posterImageView.image  = UIImage(data: coreDataMovie[indexPath.row].posterImage!)
+                }
             }
+            return cell
         }
         
-        return cell
     }
 }
 
 
-
+//MARK: - 
+extension ViewController: MyCollectionTableViewCellDelegate{
+    func selectedCollectionIndex(idx: Int) {
+        let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+        let destinationVC = mainStoryBoard.instantiateViewController(identifier: "DetailCollectionVC") as! DetailCollectionVC
+        
+        if isNetwork {
+            destinationVC.image     = images[idx]
+            destinationVC.imdbID    = movies[idx].imdbID
+            destinationVC.titleTxt  = movies[idx].movieTitle
+            destinationVC.year      = movies[idx].year
+        } else {
+            destinationVC.titleTxt  = coreDataMovie[idx].title
+            destinationVC.year      = coreDataMovie[idx].year
+            destinationVC.imdbID    = coreDataMovie[idx].imdbID
+            destinationVC.image     = UIImage(data: coreDataMovie[idx].posterImage!)
+        }
+        navigationController?.pushViewController(destinationVC, animated: true)
+    }
+}

@@ -20,6 +20,7 @@
 		87D78E9025CD30130046EAD5 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D78E8F25CD30130046EAD5 /* DetailViewController.swift */; };
 		87FA8B7A25CFB88C009D6861 /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FA8B7925CFB88C009D6861 /* MyCollectionViewCell.swift */; };
 		87FA8BA125CFDB43009D6861 /* DetailCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FA8BA025CFDB43009D6861 /* DetailCollectionVC.swift */; };
+		87FCE9F425D1348B009F4592 /* MyCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FCE9F325D1348B009F4592 /* MyCollectionTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		87D78E8F25CD30130046EAD5 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		87FA8B7925CFB88C009D6861 /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
 		87FA8BA025CFDB43009D6861 /* DetailCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionVC.swift; sourceTree = "<group>"; };
+		87FCE9F325D1348B009F4592 /* MyCollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 			children = (
 				87D78E8925CD17250046EAD5 /* MyTableViewCell.swift */,
 				87FA8B7925CFB88C009D6861 /* MyCollectionViewCell.swift */,
+				87FCE9F325D1348B009F4592 /* MyCollectionTableViewCell.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 				87FA8B7A25CFB88C009D6861 /* MyCollectionViewCell.swift in Sources */,
 				87D78E6325CD0B890046EAD5 /* Movie_List_Storyboard.xcdatamodeld in Sources */,
 				87D78E7B25CD10D10046EAD5 /* UIViewController+Ext.swift in Sources */,
+				87FCE9F425D1348B009F4592 /* MyCollectionTableViewCell.swift in Sources */,
 				87D78E5925CD0B890046EAD5 /* AppDelegate.swift in Sources */,
 				87D78E7825CD0C3A0046EAD5 /* FakeModel.swift in Sources */,
 				87D78E5B25CD0B890046EAD5 /* SceneDelegate.swift in Sources */,
